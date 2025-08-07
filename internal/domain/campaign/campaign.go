@@ -14,15 +14,10 @@ type Campaign struct {
 	Contacts []Contact
 }
 
-func NewCampaign(name, content string, contacts []string) *Campaign {
+func NewCampaign(name, content string, contacts []Contact) *Campaign {
 	id, err := uuid.NewV7()
 	if err != nil {
 		panic(err)
-	}
-
-	var contactsList []Contact
-	for _, contact := range contacts {
-		contactsList = append(contactsList, Contact{Email: contact})
 	}
 
 	return &Campaign{
@@ -30,6 +25,6 @@ func NewCampaign(name, content string, contacts []string) *Campaign {
 		Name:     name,
 		Content:  content,
 		CreateAt: time.Now(),
-		Contacts: contactsList,
+		Contacts: contacts,
 	}
 }
