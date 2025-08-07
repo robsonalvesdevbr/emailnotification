@@ -14,9 +14,16 @@ var (
 
 func Test_Campaign_Create(t *testing.T) {
 	asserts := assert.New(t)
+
+	var contacts []Contact
+	for _, email := range emails {
+		contacts = append(contacts, Contact{Email: email})
+	}
+
 	campaign := NewCampaign(name, content, emails)
+	asserts.NotNil(campaign)
+	asserts.NotNil(campaign.ID)
 	asserts.Equal(name, campaign.Name)
 	asserts.Equal(content, campaign.Content)
-	//asserts.Equal(emails, campaign.Contacts)
-
+	asserts.Equal(contacts, campaign.Contacts)
 }
