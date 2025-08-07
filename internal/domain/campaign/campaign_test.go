@@ -16,6 +16,7 @@ func Test_Campaign_Create(t *testing.T) {
 	asserts := assert.New(t)
 
 	campaign := NewCampaign(name, content, emails)
+
 	asserts.NotNil(campaign)
 	asserts.NotNil(campaign.ID)
 	asserts.Equal(name, campaign.Name)
